@@ -6,9 +6,14 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const webpack = require('webpack');
 
 module.exports = {
-    mode: 'development', // 指定构建模式
+    // mode: 'development', // 指定构建模式
 
-    entry: './src/index.js', //指定构建入口
+    // entry: './src/index.js', //指定构建入口
+    // entry: ['./src/index.js', '.src/foo.js'], //指定构建入口
+    entry: {
+        main: './src/index.js',
+        foo: './src/foo.js',
+    },
 
     output: {
         path: path.resolve(__dirname, 'dist1'),
@@ -39,20 +44,20 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/index.html', // 配置默认模板文件
         }),
-        new BundleAnalyzerPlugin(), // 
+        // new BundleAnalyzerPlugin(), // 
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin()
     ],
 
     module: {
         rules: [
-            // {
-            //     test: /\.css$/i,
-            //     use: [
-            //         MiniCssExtractPlugin.loader,
-            //         'css-loader'
-            //     ]
-            // },
+            {
+                test: /\.css$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader'
+                ]
+            },
             {
                 test: /\.scss$/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
