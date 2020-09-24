@@ -1,9 +1,10 @@
 import './style.scss'
+import vue from 'vue'
 import { foo, log }  from './foo.js'
 import { log as log1 } from './inter/inter.js'
 import image from './girl.jpg'
 import image3 from './test.gif'
-log(foo)
+log(foo, vue)
 log1('132231231232132')
 // var im = document.getElementsByClassName('image')
 var img1 = document.createElement("img");

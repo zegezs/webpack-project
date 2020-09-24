@@ -33,14 +33,22 @@ module.exports = {
     optimization: {
         usedExports: true,
         splitChunks: {
-            chunks: 'async'
+            // chunks: 'async',
+            cacheGroups: {
+                vendor: { // 抽离第三方插件
+                    test: /node_modules/,
+                    chunks: 'initial',
+                    name: 'vendor',
+                    priority: 10
+                }
+            }
         }
     },
 
     plugins: [
-        // new MiniCssExtractPlugin({
-        //     filename: '[hash].css',
-        // }),
+        new MiniCssExtractPlugin({
+            filename: '[hash].css',
+        }),
         new HtmlWebpackPlugin({
             template: 'src/index.html', // 配置默认模板文件
         }),
