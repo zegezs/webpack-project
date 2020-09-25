@@ -16,13 +16,13 @@ module.exports = {
     },
 
     output: {
-        path: path.resolve(__dirname, 'dist1'),
+        path: path.resolve(__dirname, 'dist'),
         filename: '[name].js'
     },
-    devServer: { 
+    devServer: {
         contentBase: path.resolve(__dirname, "dist"),
         compress: true,
-        port: 8080,
+        port: 8081,
         open: true, 
         hot: true, //开启热更新
     },
@@ -54,7 +54,7 @@ module.exports = {
         }),
         // new BundleAnalyzerPlugin(), // 
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin()
+        new webpack.NamedModulesPlugin() 
     ],
 
     module: {

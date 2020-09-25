@@ -4,13 +4,15 @@ import { foo, log }  from './foo.js'
 import { log as log1 } from './inter/inter.js'
 import image from './girl.jpg'
 import image3 from './test.gif'
-log(foo, vue)
-log1('132231231232132')
+log(foo)
+log1(image)
+import('vue')
+import('vue-router')
 // var im = document.getElementsByClassName('image')
 var img1 = document.createElement("img");
 var img2 = document.createElement("img");
 var imaged = require("./girl.jpg");
-var test = require("./test.gif");
+var test = require("./static/test2.png");
 img1.src = `${imaged.default}`
 img2.src = `${test.default}`
 console.log('im', imaged.default);
