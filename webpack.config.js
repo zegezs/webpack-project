@@ -5,8 +5,10 @@ const { HotModuleReplacementPlugin } = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const webpack = require('webpack');
 
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+
 module.exports = {
-    // mode: 'development', // 指定构建模式
+    mode: 'development', // 指定构建模式
 
     // entry: './src/index.js', //指定构建入口
     // entry: ['./src/index.js', '.src/foo.js'], //指定构建入口
@@ -33,7 +35,7 @@ module.exports = {
     optimization: {
         usedExports: true,
         splitChunks: {
-            // chunks: 'async',
+            chunks: 'async',
             cacheGroups: {
                 vendor: { // 抽离第三方插件
                     test: /node_modules/,
@@ -42,7 +44,13 @@ module.exports = {
                     priority: 10
                 }
             }
-        }
+        },
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true
+            })
+        ]
     },
 
     plugins: [
@@ -54,7 +62,11 @@ module.exports = {
         }),
         // new BundleAnalyzerPlugin(), // 
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin() 
+        new webpack.NamedModulesPlugin(),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./dist/dll/vue.manifest.json')
+        })
     ],
 
     module: {
@@ -62,8 +74,9 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader'
+                    // MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    // 'style-loader'
                 ]
             },
             {
@@ -79,7 +92,12 @@ module.exports = {
                         limit: 8192
                     }
                 }]
-            }
+            },
+            {
+                test: /\.txt$/,
+                use: 'raw-loader'
+            },
+
         ]
     },
 

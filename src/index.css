@@ -1,4 +1,5 @@
-.body {
-    background-color:#fdf;
-    background-image: url('/src/girl.jpg');
+.title {
+    /* background-color:#fdf;
+    background-image: url('/src/girl.jpg'); */
+    color: blueviolet;
 }
