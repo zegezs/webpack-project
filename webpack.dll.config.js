@@ -4,15 +4,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-
+    mode: 'development', // 指定构建模式
     entry: {
-        vue: ['vue']
+        vue: ['vue', 'vue-router' ]
     },
 
     output: {
         path: path.resolve('dist/dll'),
         filename: '[name].dll.js',
-        library: '[name_dll_[hash]]'
+        library: '[name]_dll_[hash]'
     },
     devServer: { 
         contentBase: path.resolve(__dirname, "dist")

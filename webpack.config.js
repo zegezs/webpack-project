@@ -97,6 +97,10 @@ module.exports = {
                 test: /\.txt$/,
                 use: 'raw-loader'
             },
+            {
+                test: /\.js$/,
+                use: ['./src/base_loader.js']
+            }
 
         ]
     },

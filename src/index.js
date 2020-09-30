@@ -19,10 +19,10 @@ title.class = 'title'
 document.body.appendChild(title)
 
 
-let div = document.createElement("div");
-div.className = "title";
-div.innerText = "hello div";
-document.getElementsByTagName("body")[0].appendChild(div);
+// let div = document.createElement("div");
+// div.className = "title";
+// div.innerText = "hello div";
+// document.getElementsByTagName("body")[0].appendChild(div);
 
 // import('vue-router')
 // var im = document.getElementsByClassName('image')
