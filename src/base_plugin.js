@@ -5,9 +5,16 @@ class BasePlugin {
   }
 
   apply(compiler) {
-    console.log(compiler);
+    // console.log(compiler);
 
-    compiler.plugins('compilation', function(compilation){})
+    compiler.plugin('compilation', function(compilation, callback){
+
+      compilation.plugin("optimize", function() {
+        console.log("Assets are being optimized.");
+      });
+
+      // callback() 
+    })
   }
 
 }

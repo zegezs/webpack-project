@@ -68,7 +68,7 @@ module.exports = {
             context: __dirname,
             manifest: require('./dist/dll/vue.manifest.json')
         }),
-        new BasePlugin(options)
+        new BasePlugin({options: true})
     ],
 
     module: {
