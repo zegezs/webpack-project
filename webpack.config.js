@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const webpack = require('webpack');
+const BasePlugin = require('./src/base_plugin')
 
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
@@ -66,7 +67,8 @@ module.exports = {
         new webpack.DllReferencePlugin({
             context: __dirname,
             manifest: require('./dist/dll/vue.manifest.json')
-        })
+        }),
+        new BasePlugin(options)
     ],
 
     module: {
@@ -98,8 +100,14 @@ module.exports = {
                 use: 'raw-loader'
             },
             {
-                test: /\.js$/,
-                use: ['./src/base_loader.js']
+                test: /\.ts$/,
+                use: [{
+                    loader: path.resolve('./src/base_loader.js'),
+                    options: {
+                        name: 'li'
+                    },
+                    
+                }]
             }
 
         ]

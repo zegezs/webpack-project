@@ -6,6 +6,7 @@ import image from './girl.jpg'
 import image3 from './test.gif'
 import txt from './file.txt'
 import './index.css';
+import './index.ts'
 // import { isPlainObject } from 'lodash'
 import  isPlainObject  from 'lodash/isPlainObject'
 log1(image, isPlainObject)
