@@ -25,7 +25,7 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, "dist"),
         compress: true,
-        port: 8081,
+        port: 8084,
         open: true, 
         hot: true, //开启热更新
     },
@@ -64,10 +64,10 @@ module.exports = {
         // new BundleAnalyzerPlugin(), // 
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
-        new webpack.DllReferencePlugin({
-            context: __dirname,
-            manifest: require('./dist/dll/vue.manifest.json')
-        }),
+        // new webpack.DllReferencePlugin({
+        //     context: __dirname,
+        //     manifest: require('./dist/dll/vue.manifest.json')
+        // }),
         new BasePlugin({options: true})
     ],
 
