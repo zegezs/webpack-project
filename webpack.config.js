@@ -46,6 +46,7 @@ module.exports = {
                 }
             }
         },
+        // 开启缓存并启用多进程并行运行
         minimizer: [
             new UglifyJsPlugin({
                 cache: true,
